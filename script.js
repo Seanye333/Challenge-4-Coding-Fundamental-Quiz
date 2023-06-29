@@ -1,3 +1,18 @@
+// sudo code 
+// 1. create an array with all questions and write to HTML
+// 2. declar and point variables to HTML
+// 3. create quiz start pushbutton to allow user to start and hide the start window 
+// 4. create countdowm timer for quiz 
+// 5. verify answer with each questions 
+// 6. substract 10s if response is incorrect 
+// 7. hide question window if questions are all answered 
+// 8. display a box with submit function to allow users input their initials
+// 9. hide user' initals window 
+// 10. calculate and display grade of quiz with initials
+// 11. store user's score 
+// 12. click on Re-start pushbutton to jump back to step 4 and restart timer once start button is clicked 
+
+// declar quiz questions, answers, and corect answers with array 
 const quizArray = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -44,7 +59,7 @@ const quizArray = [
         correct: "d",
     },
 ];
-
+// declar following global variables and point into ID or class selectors 
 var startQuiz = document.querySelector("#startquiz");
 var startPage = document.getElementById("startpage");
 var timerCountDown = document.getElementById('countdown');
@@ -63,17 +78,20 @@ const answerC = document.getElementById('answerC');
 const answerD = document.getElementById('answerD');
 const submitBtn = document.getElementById('submit');
 const submitintPB = document.getElementById('submitinitialPB')
-// var textInitial = usertext;
+
+// set inital and rest timer, quiz number, number of correct and incorrect repsonse 
 var secondsLeft = 75;
 let currentQuiz = 0;
 let correctAnswer = 0;
 let mistake = 0;
 
-// console.log(textInitial);
+// hide windows at the begining and restart 
 elementQuiz.style.visibility = 'hidden';
 quizComplete.style.visibility = 'hidden';
 submitinitialWindow.style.visibility = 'hidden';
 
+// Start pushbutton to start quiz at 75s with zero question answered 
+// hide start window once click and display timer 
 startQuiz.addEventListener("click", function(){
     secondsLeft = 75;
     currentQuiz = 0;   
@@ -81,6 +99,9 @@ startQuiz.addEventListener("click", function(){
     startPage.style.visibility = 'hidden';
 })
 
+// function of quiz timer: display quiz questions and choices if timer is greater than 0s and reponse to the quiz is less than 5  
+// either time is complete or quiz is completed, questions will be hide, and initial window will be displayed 
+// count down by 1s 
 function quizTimer() {
     var timeInterval = setInterval(function () {
         secondsLeft--;
@@ -89,14 +110,14 @@ function quizTimer() {
             elementQuiz.style.visibility = 'visible';
         }
     else if (secondsLeft === 0 || currentQuiz === 5) {
-        clearInterval(timeInterval);
-        
+        clearInterval(timeInterval);       
         elementQuiz.style.visibility = 'hidden';
         submitinitialWindow.style.visibility = 'visible';
         }
      }, 1000);}
           
-    
+//quiz inputs/answers from user 
+//check selected answers   
 function inputQuiz(){
     removeAnswers()
     const currentquizArray= quizArray[currentQuiz]
@@ -107,11 +128,9 @@ function inputQuiz(){
         answerD.innerText = currentquizArray.d        
     } 
     inputQuiz()
-
 function removeAnswers(){
     elementA.forEach(answerEl => answerEl.checked = false)
 }
-
 function selectAnswers() {
     let answer
     elementA.forEach(answerE1 => {
@@ -122,6 +141,11 @@ function selectAnswers() {
     return answer
 }
 
+//if submit button is clicked check answers. 
+//If correct, add one to variable. 
+//if incorect, subtract 10s 
+// calculate score based on correct answer , each correct answer is 20 points 
+//    
 submitBtn.addEventListener('click', () => {
     const answer = selectAnswers()
     if(answer){
@@ -137,7 +161,6 @@ submitBtn.addEventListener('click', () => {
         if(currentQuiz < quizArray.length){
             inputQuiz()
         } else{
-            // elementQuiz.innerHTML = `<h2> Your answered ${correctAnswer} questions corretcly<h2>`
             var finalScore = Number(correctAnswer)*20;
             alldonepage.innerHTML = `<p> Your final score is ${finalScore} <p>`
             submitinitialWindow.style.visibility = 'visible';
@@ -147,36 +170,29 @@ submitBtn.addEventListener('click', () => {
         console.log(secondsLeft);
     }
 })
-
 var initialSaved = document.getElementById("msg");
-// var finalScore = Number(correctAnswer)*20;
-// var highScore= document.getElementById("higescore");
 function saveLastInitial() {
   // Save related form data as an object
   var studentGrade = {
-    highScore: highScore.value,
     initialSaved: initialSaved.value.trim()
     
   };
-  // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+  // store object in storage to change it to a string
   localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
 }
 
 function renderLastInitial() {
-  // Use JSON.parse() to convert text to JavaScript object
+  // convert text to JavaScript object
   var lastInitial = JSON.parse(localStorage.getItem("studentGrade"));
-  // Check if data is returned, if not exit out of the function
+  // used to display initial and grade 
   if (lastInitial !== null) {
   document.getElementById("saved-initial").innerHTML = lastInitial.initialSaved ;
   document.getElementById("saved-grade").innerHTML = Number(correctAnswer)*20;
-//   document.getElementById("saved-grade").innerHTML = lastInitial.highScore;
   } else {
     return;
   }
-//   if (finalScore > highScore)
-//     {highScore = finalScore;}
 }
-
+// submit your initial here to return with initial-score
 submitintPB.addEventListener("click", function(event) {
   event.preventDefault();
   saveLastInitial();
@@ -186,12 +202,10 @@ submitintPB.addEventListener("click", function(event) {
 
 // The init() function fires when the page is loaded 
 function init() {
-  // When the init function is executed, the code inside renderLastInitial function will also execute
   renderLastInitial();
 }
 init();
-
+// restart quiz and return to start menu here if push button is clicked 
 gobackPB.addEventListener("click", function(){
-    // highScore.style.visibility = 'hidden';
     startPage.style.visibility = 'visible';
 })

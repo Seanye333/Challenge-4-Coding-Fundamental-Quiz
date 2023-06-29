@@ -9,14 +9,17 @@
 </head>
 <body>
     <main>
+        <!-- start page displays -->
         <legend id="startpage"> Coding Fundamental Quiz 
             <p> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds! </p> 
             <button id="startquiz"> Start Quiz </button>
         </legend>
+        <!-- quiz countdown timer -->
         <aside class="countdowntimer">
             <h1 id="timedisplaytext"> Quiz Timer: </h1>
             <h2 id="countdown"></h2>
         </aside>
+        <!-- questions and answers for array in Javascript-->
         <section id="quizlist">
                 <h2 id="question">Question Text</h2>
                 <ul> 
@@ -40,28 +43,25 @@
             <button id="submit"> Submit </button>
         </section>
         <form id ="alldonepage"> All done! 
-            <!-- <p> Your final score is: </p> -->
         </form>
+        <!-- submit iniitial here -->
         <form id="submitinitial">
             <div>
                 <label for="submitint">Please input your initial here: </label>
                 <textarea id="msg" name="comments"></textarea>
-                <!-- <input id="submitint" type="text" name="text" /> -->
             </div>
             <div>
                 <input type="submit" id = "submitinitialPB"v alue="Submit" />
             </div>
         </form>
-        <!-- <button id="submitinitial"> Submit </button> -->
+        <!-- return quiz grade with user's initial -->
         <legend id="highscorepage"> 
-            <!-- <p id="higescore"> Your highest score is: </p> -->
-            <p> Initial & Current Grade: 
-                <span id="saved-initial"></span>
+            <p> Initial - Current Grade: 
+                <span id="saved-initial"></span> -
                 <span id="saved-grade"></span>
             </p>
             <button id="goback"> Re-start </button>
             <p> Note : Please Complete Quiz before click on Re-start</p>
-            <!-- <button id="clearhistory"> clear History</button> -->
         </legend>
     </main>
     <script src="script.js"></script>
