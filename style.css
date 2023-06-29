@@ -66,6 +66,11 @@ section ul:hover {
     margin-left: 24%;
 }
 
+textarea {
+    display: flex;
+    margin: 3px
+}
+
 form{
     display: flex;
     flex-direction: row;
