@@ -94,7 +94,8 @@ submitinitialWindow.style.visibility = 'hidden';
 // hide start window once click and display timer 
 startQuiz.addEventListener("click", function(){
     secondsLeft = 75;
-    currentQuiz = 0;   
+    currentQuiz = 0;
+    correctAnswer = 0;   
     quizTimer(); 
     startPage.style.visibility = 'hidden';
 })
