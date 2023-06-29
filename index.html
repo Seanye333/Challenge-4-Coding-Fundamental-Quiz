@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coding Fundamental Quiz</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <main>
+        <legend id="startpage"> Coding Fundamental Quiz 
+            <p> Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds! </p> 
+            <button id="startquiz"> Start Quiz </button>
+        </legend>
+        <aside class="countdowntimer">
+            <h1 id="timedisplaytext"> Quiz Timer: </h1>
+            <h2 id="countdown"></h2>
+        </aside>
+        <section id="quizlist">
+                <h2 id="question">Question Text</h2>
+                <ul> 
+                    <li>
+                        <input type ="radio" name="answer" id="a" class="answer">
+                        <label for ="a" id="answerA">Answer</label>
+                    </li>
+                    <li>
+                        <input type ="radio" name="answer" id="b" class="answer">
+                        <label for ="b" id="answerB">Answer</label>
+                    </li>
+                    <li>
+                        <input type ="radio" name="answer" id="c" class="answer">
+                        <label for ="c" id="answerC">Answer</label>
+                    </li>
+                    <li>
+                        <input type ="radio" name="answer" id="d" class="answer">
+                        <label for ="d" id="answerD">Answer</label>
+                    </li>
+                </ul>
+            <button id="submit"> Submit </button>
+        </section>
+        <form id ="alldonepage"> All done! 
+            <!-- <p> Your final score is: </p> -->
+        </form>
+        <form id="submitinitial">
+            <div>
+                <label for="submitint">Please input your initial here: </label>
+                <textarea id="msg" name="comments"></textarea>
+                <!-- <input id="submitint" type="text" name="text" /> -->
+            </div>
+            <div>
+                <input type="submit" id = "submitinitialPB"v alue="Submit" />
+            </div>
+        </form>
+        <!-- <button id="submitinitial"> Submit </button> -->
+        <legend id="highscorepage"> 
+            <!-- <p id="higescore"> Your highest score is: </p> -->
+            <p> Initial & Current Grade: 
+                <span id="saved-initial"></span>
+                <span id="saved-grade"></span>
+            </p>
+            <button id="goback"> Re-start </button>
+            <p> Note : Please Complete Quiz before click on Re-start</p>
+            <!-- <button id="clearhistory"> clear History</button> -->
+        </legend>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
